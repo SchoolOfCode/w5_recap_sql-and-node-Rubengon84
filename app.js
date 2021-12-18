@@ -50,7 +50,7 @@ export const cats = [
 - 👉 Add request handlers for your API that will handle requests to the path "/cats" for all the 
 cats, providing the data in the cats array in this file. Test this in your browser. (Completed) 
 - 👉 Add code to also handle requests for a cat by id using params and cats by name using a query. 
-Test this in your browser.
+Test this in your browser. (Completed)
 - 👉 Go to main.js in the public/js folder, and write the code needed to hook up the button with id 
 "get-cats" to show the data on the front end.
 */
