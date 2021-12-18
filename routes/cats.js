@@ -7,15 +7,15 @@ const router = new express.Router();
 
 
 // Handle request to retieve all the cats when the path match, in this case is /cats"/"
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   // Check if query object is empty or not
   if(Object.keys(req.query).length !== 0) {
     // If there is a query is not empty and there is query request with name
     if(req.query.name) {
       // Get name request from req.query and make it lowercase
-      const name = req.query.name.toLowerCase();
+      const name = req.query.name;
       // Get the cat by the name using funtion getCatByName from methods
-      const cat = catsModels.getCatByName(name);
+      const cat = await catsModels.getCatByName(name);
       // Return the response
       res.json({
         succes: true,
@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
   }else {
   
     // Use the function getAllCats from models functions file
-    let cats = catsModels.getAllCats();
+    let cats = await catsModels.getAllCats();
     // Return the response
     res.json({
       succes: true,
@@ -46,11 +46,11 @@ router.get("/", (req, res) => {
 });
 
 // Handle request to retrieve a cat by ID
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   // Get Id from request.params and convert it to a number
   const id = Number(req.params.id);
   // Get the cat using the getCatById function from catsmodels functions
-  const cat = catsModels.getCatById(id);
+  const cat = await catsModels.getCatById(id);
   // Return the response
   res.json({
     succes: true,
