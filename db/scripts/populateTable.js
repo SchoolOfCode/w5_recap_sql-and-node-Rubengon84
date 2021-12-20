@@ -1,7 +1,7 @@
 // Import query function from index.js
 import query from "../index.js";
 // Import cats object from app.js
-import {cats} from "../../app.js";  
+//import {cats} from "../../app.js";  
 
 // Function for populate the table in the cloud data-base with the information from cats object
 async function populateCatsTable() {

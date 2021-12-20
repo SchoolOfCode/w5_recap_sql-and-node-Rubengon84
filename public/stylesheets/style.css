@@ -57,6 +57,8 @@ button {
 }
 
 .navOptions {
+  border-radius: 0.5rem;
+  border: 1px dotted black;
   margin: 0 auto;
   width: 80%;
   padding: 0.5rem;

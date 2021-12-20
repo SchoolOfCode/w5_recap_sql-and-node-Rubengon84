@@ -1,5 +1,5 @@
 // Import cat object from app
-import {cats} from "../app.js";
+//import {cats} from "../app.js";
 
 import query from "../db/index.js";
 
@@ -34,7 +34,7 @@ export async function getCatByName(name) {
   // Make async sql query to the database to retrieve the table matching the given name
   const cat = await query(
     `SELECT * FROM cats
-     WHERE cats.name = $1;`,[name]
+     WHERE cats.name ILIKE '%'|| $1 || '%';`,[name]
   );
   
   return cat.rows;

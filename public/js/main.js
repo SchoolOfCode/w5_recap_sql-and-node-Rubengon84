@@ -17,6 +17,17 @@ async function getCats(id) {
   // For each cat information returned from the server, use the rendercat function to show it in the result area
   payload.forEach(renderCat);
 }
+
+// Function for making a fetch request for getting a cat by name
+async function getCatsByName(name) {
+  // Make a fetch request for getting the information from the data base with the name introduced in the url-request
+  const response = await fetch(`${url}/cats?name=${name}`);
+  const { payload } = await response.json();
+  console.log(payload);
+  // For each cat information returned from the server, use the rendercat function to show it in the result area
+  payload.forEach(renderCat);
+}
+
 // Function for making a fetch request for creating or updating cats
 async function addCatInfo(method, id) {
   console.log(gatherFormData());
@@ -64,9 +75,14 @@ function handleClick(event) {
       getCats(id);
       break;
     case 'getById':
-      // If user wants to get the cat by id, id will be the value the iput in that section and it will be introduce in the fetch-url
+      // If user wants to get the cat by id, id will be the value the input in that section and it will be introduce in the fetch-url
       id = document.querySelector("#get-cat-id").value;
       getCats(id);
+      break;
+    case 'getByName':
+      // If user wants to get the cat by name, name will be the value the input in that section and it will be introduce in the fetch-url
+      let name = document.querySelector("#get-cat-name").value;
+      getCatsByName(name);
       break;
     case 'createCat':
       // If user wants to create a cat, the method passed in the fetch request will be POST and the id will be empty, so it will not interfare in the fetch url
