@@ -14,5 +14,3 @@ function createCat(cat) {
 
   console.log(res);
 }
-
-createCat(cat1);

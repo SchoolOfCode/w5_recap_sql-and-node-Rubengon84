@@ -10,5 +10,3 @@ function deleteCat(id) {
   );
   console.log(res);
 }
-
-deleteCat(4);

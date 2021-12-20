@@ -59,6 +59,49 @@ router.get("/:id", async (req, res) => {
   });
 })
 
+// Handle request to create a cat in the cats table
+router.post("/", async (req, res) => {
+  // Declare cat and passed the information from the request body
+  let cat = req.body;
+  // Create cat using createCat function passing the information that user get from request body
+  let catCreated = await catsModels.createCat(cat);
+  res.json({
+    succes: true,
+    message: `Cat created`,
+    payload: catCreated
+  });
+
+})
+
+
+// Handle request to update a cat with the given Id
+router.put("/:id", async(req, res) => {
+  // Get the Id from req.params and convert it in to a number
+  const id = Number(req.params.id); 
+  // Declare cat and passed the information from the request body 
+  let cat = req.body;
+  // Updating a cat using updateCar function passing the information that user get from request body and Id
+  let catUpdated = await catsModels.updateCat(id,cat);
+  res.json({
+    succes: true,
+    message: `Cat updated with ID ${id}`,
+    payload: catUpdated
+  });
+} )
+
+// Handle request to delete a cat with the given Id
+router.delete("/:id", async (req, res) => {
+  // Get the Id from req.params and convert it in to a number
+  const id = Number(req.params.id);
+  // Delete a cat using the deleteCat funtion with the given ID
+  const catDeleted = await catsModels.deleteCat(id);
+  res.json({
+    succes: true,
+    message: `Cat deleted with id ${id}`,
+    payload: catDeleted
+  });
+})
+
 
 // export router Object to use it in app.js
 export default router;

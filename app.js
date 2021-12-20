@@ -25,6 +25,7 @@ app.get("/", function (req, res, next) {
   res.render("index", { title: "Books" });
 });
 // exports cats to use the object in the models functions
+/*
 export const cats = [
   {
     id: 1,
@@ -45,7 +46,7 @@ export const cats = [
     hobby: "obstruct",
   },
 ];
-
+*/
 /* Your tasks for part 1: 🔻 
 - 👉 Add request handlers for your API that will handle requests to the path "/cats" for all the 
 cats, providing the data in the cats array in this file. Test this in your browser. (Completed) 

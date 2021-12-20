@@ -39,3 +39,43 @@ export async function getCatByName(name) {
   
   return cat.rows;
 }
+
+// Create a row by a given information
+export async function createCat(cat) {
+  // Declare the variables to update and asign to the information passed from cat
+  const name = cat.catName;
+  const human = cat.humanName;
+  const hobby = cat.hobby;
+    // Call the function query to send a sql query to create a row in the cloud data-base by the variables declared before
+  let res = await query(
+    `INSERT INTO cats (name, human, hobby) VALUES ($1, $2, $3);`, [name, human, hobby]
+  );
+  return res;
+}
+
+
+// Update row by a given Id and the information to update
+export async function updateCat(id,cat) {
+  // Declare the variables to update and asign to the information passed from cat
+  const name = cat.catName;
+  const human = cat.humanName;
+  const hobby = cat.hobby;
+  // Call the function query to send a sql query to update the id row in the cloud data-base by the variables declared before 
+  let res= await query(
+    `UPDATE cats
+     SET name = $1, human = $2, hobby = $3
+     WHERE cats.id = $4;`, [name, human, hobby, id]
+  );
+  console.log(res);
+}
+
+
+// Delete a row by a given Id
+export async function deleteCat(id) {
+   // Call the function query to send a sql query to Delete a row in the cloud data-base by Id 
+  let res = await query(
+    `DELETE FROM cats
+     WHERE cats.id = $1;`, [id]
+  );
+  console.log(res);
+}

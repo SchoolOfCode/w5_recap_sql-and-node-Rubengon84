@@ -15,5 +15,3 @@ function updateCat(id,cat) {
   );
   console.log(res);
 }
-
-updateCat(4,cat1);
